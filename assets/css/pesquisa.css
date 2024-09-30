@@ -1,0 +1,89 @@
+/* Estilos gerais */
+body {
+  font-family: 'Fredoka', sans-serif;
+  background-color: #b9b7b76c !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo do formulário de busca */
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #343a40;
+}
+
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo da tabela */
+.table-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+tbody td {
+  padding: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table-bordered {
+  border: 1px solid #dddddd;
+}
+
+.table-bordered td,
+.table-bordered th {
+  border: 1px solid #dddddd;
+}
+
+/* Mensagem de nenhum resultado */
+.no-result {
+  text-align: center;
+  font-size: 18px;
+  color: #dc3545;
+  margin-top: 20px;
+}

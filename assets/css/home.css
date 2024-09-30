@@ -1,0 +1,30 @@
+body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Fredoka', sans-serif;
+      background-color: #b9b7b76c !important;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      color: #343a40;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      width: 200px;
+    }

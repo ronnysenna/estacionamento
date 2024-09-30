@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cadastro de Cliente e Veículos</title>
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet"/>
+    <!-- Link do Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Cadastrar Cliente e Veículos</h2>
+        <form action="functions/cadastrar.php" method="POST">
+            <!-- Campos para o cliente -->
+            <div class="form-group">
+                <label for="nome_completo">Nome Completo do Cliente</label>
+                <input type="text" class="form-control" id="nome_completo" name="nome_completo" placeholder="Digite o nome completo" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF" required>
+            </div>
+
+            <!-- Seção para veículos -->
+            <div id="veiculos-section">
+                <h4>Veículos</h4>
+                <div class="veiculo">
+                    <div class="form-group">
+                        <label for="tip_veiculo[]">Tipo de Veículo</label>
+                        <input type="text" class="form-control" name="tip_veiculo[]" placeholder="Carro, Moto, etc." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="marca[]">Marca</label>
+                        <input type="text" class="form-control" name="marca[]" placeholder="Digite a marca do veículo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo[]">Modelo</label>
+                        <input type="text" class="form-control" name="modelo[]" placeholder="Digite o modelo do veículo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="placa[]">Placa</label>
+                        <input type="text" class="form-control" name="placa[]" placeholder="Digite a placa do veículo" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botão para adicionar mais veículos -->
+            <button type="button" class="btn btn-secondary" id="add-veiculo-btn">Adicionar Veículo</button>
+
+            <!-- Botão para submeter o formulário -->
+            <button type="submit" class="btn btn-primary btn-block mt-4">Cadastrar Cliente e Veículos</button>
+        </form>
+    </div>
+
+    <!-- Script para adicionar novos campos de veículo -->
+    <script>
+        document.getElementById('add-veiculo-btn').addEventListener('click', function() {
+            var veiculoSection = document.getElementById('veiculos-section');
+            var newVeiculo = document.createElement('div');
+            newVeiculo.classList.add('veiculo');
+            newVeiculo.innerHTML = `
+                <hr>
+                <div class="form-group">
+                    <label for="tip_veiculo[]">Tipo de Veículo</label>
+                    <input type="text" class="form-control" name="tip_veiculo[]" placeholder="Carro, Moto, etc." required>
+                </div>
+                <div class="form-group">
+                    <label for="marca[]">Marca</label>
+                    <input type="text" class="form-control" name="marca[]" placeholder="Digite a marca do veículo" required>
+                </div>
+                <div class="form-group">
+                    <label for="modelo[]">Modelo</label>
+                    <input type="text" class="form-control" name="modelo[]" placeholder="Digite o modelo do veículo" required>
+                </div>
+                <div class="form-group">
+                    <label for="placa[]">Placa</label>
+                    <input type="text" class="form-control" name="placa[]" placeholder="Digite a placa do veículo" required>
+                </div>`;
+            veiculoSection.appendChild(newVeiculo);
+        });
+    </script>
+
+</body>
+</html>
