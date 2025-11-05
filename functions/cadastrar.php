@@ -1,6 +1,14 @@
 <?php
+// Ativar exibição de erros para debug
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Inclua o arquivo de conexão ao banco de dados
-include 'conexao.php';
+try {
+    include 'conexao.php';
+} catch (Exception $e) {
+    die("Erro ao incluir conexao.php: " . $e->getMessage());
+}
 
 // Verifique se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

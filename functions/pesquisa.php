@@ -10,7 +10,8 @@ if (isset($_GET['searchTerm']) && !empty($_GET['searchTerm'])) {
     $searchTerm = $conn->real_escape_string($_GET['searchTerm']);
 
     // Escreva a consulta SQL para buscar os clientes e seus veículos
-    $sql = "SELECT clientes.nome_completo, clientes.cpf, veiculos.tip_veiculo, veiculos.marca, veiculos.modelo, veiculos.placa
+    $sql = "SELECT clientes.id as cliente_id, veiculos.id as veiculo_id, clientes.nome_completo, clientes.cpf, 
+            veiculos.tip_veiculo, veiculos.marca, veiculos.modelo, veiculos.placa
             FROM clientes
             INNER JOIN veiculos ON clientes.id = veiculos.id_cliente
             WHERE clientes.nome_completo LIKE '%$searchTerm%' OR clientes.cpf LIKE '%$searchTerm%'";
@@ -25,7 +26,7 @@ if (isset($_GET['searchTerm']) && !empty($_GET['searchTerm'])) {
         if ($result->num_rows > 0) {
             // Comece a criar a tabela HTML para os resultados
             $resultados .= "<table class='table table-bordered table-striped table-hover'>";
-            $resultados .= "<thead><tr><th>Nome do Cliente</th><th>CPF</th><th>Tipo de Veículo</th><th>Marca</th><th>Modelo</th><th>Placa</th></tr></thead>";
+            $resultados .= "<thead><tr><th>Nome do Cliente</th><th>CPF</th><th>Tipo de Veículo</th><th>Marca</th><th>Modelo</th><th>Placa</th><th>Ações</th></tr></thead>";
             $resultados .= "<tbody>";
 
             // Percorra cada linha do resultado
@@ -37,6 +38,10 @@ if (isset($_GET['searchTerm']) && !empty($_GET['searchTerm'])) {
                 $resultados .= "<td>" . $row['marca'] . "</td>";
                 $resultados .= "<td>" . $row['modelo'] . "</td>";
                 $resultados .= "<td>" . $row['placa'] . "</td>";
+                $resultados .= "<td>";
+                $resultados .= "<a href='editar_cliente.php?id=" . $row['cliente_id'] . "' class='btn btn-warning btn-sm mr-1'>✏️ Editar</a>";
+                $resultados .= "<a href='deletar_cliente.php?id=" . $row['cliente_id'] . "&veiculo_id=" . $row['veiculo_id'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Tem certeza que deseja excluir este cliente e seus veículos?\")'>🗑️ Deletar</a>";
+                $resultados .= "</td>";
                 $resultados .= "</tr>";
             }
 
@@ -75,6 +80,7 @@ if (isset($_GET['searchTerm']) && !empty($_GET['searchTerm'])) {
                 <input type="text" class="form-control" id="searchTerm" name="searchTerm" placeholder="Digite o nome ou CPF" required>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Buscar</button>
+            <a href="../home.html" class="btn btn-secondary btn-block mt-2">🏠 Voltar à Home</a>
         </form>
     </div>
 
